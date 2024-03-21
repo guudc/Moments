@@ -46,7 +46,7 @@ const MomentView = ({moment = [], refresh = false}) => {
         })   
     }
     const downloadQr = (id) => {
-        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?=" + id
+        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?m=" + id
         const cnv = document.createElement('canvas')
         QRCode.toDataURL(
             cnv,
