@@ -1,0 +1,34 @@
+.header_profile_nav {
+    position:fixed;
+    display:none;
+    align-items:center;
+    flex-direction:column;
+    box-shadow:2px 2px 3px 2px rgba(0,0,0,.1);
+    background:var(--main-bg);
+    border-radius: 5px;
+    padding: 10px 5px;
+    top:20px;
+    animation: header_profile_movein 300ms;
+    z-index: 5;
+}
+.header_profile_nav div{
+    padding:3px 5px;
+    color: var(--secondary);
+    text-align: center;
+    width: 100%;
+}
+.header_profile_nav div:active{
+    background: var(--primary);
+}
+.header_title {
+    color: var(--secondary);
+    white-space: no-wrap;
+    text-overflow: ellipsis;
+    max-width: calc(50% + 20px);
+    font-size: 16px;
+}
+
+@keyframes header_profile_movein {
+    0%{transform: translateY(-400px);}
+    100%{transform: translateY(0px);}
+}

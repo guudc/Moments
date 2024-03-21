@@ -1,0 +1,76 @@
+.moment_main {
+    display: flex;
+    width: calc(100% - 30px);
+    margin-left: auto;margin-right: auto;
+    height: auto ;
+    flex-wrap: wrap;
+    user-select: none;
+}
+.m_size {
+    width:calc((100% / 5) - 5px);
+    height:200px;
+    margin:2px 2px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.moment_new {
+    background: var(--button);
+    color:var(--primary);
+    transition: all 300ms;
+    cursor: pointer;
+    font-size: 40px;
+}
+.moment_new:active{
+    color: var(--button);
+    background:var(--primary);
+    transition: all 300ms;
+}
+.moment_view {
+   background: var(--button);
+   transition: all 300ms;
+   cursor: pointer;
+   user-select: none;
+}
+.moment_view_img{
+    transition: all 300ms;
+    background-image: url('../media/logos/moment_512.png');
+}
+.moment_view_img:active{
+    filter: brightness(120%);
+    transform: scale(0.95);
+}
+.moment_view_name {
+    margin-top: auto;
+    margin-bottom: 15px;
+    font-size:16px;
+    color: var(--button);
+    margin-left: 10px;
+    margin-right: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+.moment_view_name span {
+    background: var(--primary);
+    border-radius: 5px;
+    padding:2px 4px;
+}
+@media only screen and (max-width:900px) {
+    .m_size {
+        width:calc((100% / 4) - 5px);
+        height:180px;
+    }  
+}
+@media only screen and (max-width:600px) {
+    .m_size {
+        width:calc((100% / 3) - 5px);
+        height:180px;
+    }  
+}
+@media only screen and (max-width:400px) {
+    .m_size {
+        width:calc((100% / 2) - 5px);
+        height:170px;
+    }  
+}

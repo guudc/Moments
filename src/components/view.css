@@ -1,0 +1,124 @@
+.view_main {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    user-select: none;
+    overflow: hidden;
+}
+.view_main_disp {
+    display: flex;
+    width: calc(100% - 4px);
+    margin-left: auto;margin-right: auto;
+    height: auto ;
+    flex-wrap: wrap;
+    user-select: none;
+}
+.view_buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    padding-bottom: 15px;
+}
+.view_buttons div{
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.view_moment {
+    display: flex;
+    align-items: flex-start;
+    border-radius: 5px;
+    margin: 2px 2px;
+    background-image: url('../media/logos/moment_512.png');
+    background-position: center top;
+}
+.view_moment:active {
+    transform: scale(1.1);
+}
+.view_time {
+    background: var(--button);
+    color:var(--primary);
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.view_date {
+    background: var(--primary);
+    border-radius: 20px;
+    padding:3px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.v_size {
+    width:calc((100% / 5) - 5px);
+    height:200px;
+    transition: all 300ms;
+}
+.moment_viewer {
+    position: fixed;
+    display: flex;
+    top:0px;left:0px;
+    width: 100%;height: 100%;
+    backdrop-filter: blur(3px);
+    z-index: 10;
+    animation: movein 500ms;
+}
+.moment_view_bg {
+    background-position: center;
+    background-size: 200%;
+    filter: blur(5px);
+    
+}
+.moment_view_main {
+    margin-left: calc(-100% + 50px);
+    background-position: center top;
+    background-size: cover;
+    width:calc((100% - 100px));
+    height: calc((100% - 50px));
+    margin-top: auto;margin-bottom: auto;
+    z-index: 2;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .1);
+    border-radius: 15px;
+
+}
+@keyframes movein {
+    0%{
+        transform: scale(0);
+        transform-origin: 50% 50%;
+    }
+    100%{
+        transform: scale(1);
+        transform-origin: 50% 50%;
+    }
+}
+@media only screen and (max-width:900px) {
+    .v_size {
+        width:calc((100% / 3) - 4px);
+        height:250px;
+    }  
+}
+@media only screen and (max-width:600px) {
+    .v_size {
+        width:calc((100% / 3) - 5px);
+        height:180px;
+    }  
+    .moment_view_main {
+        margin-left: calc(-100% + 25px);
+        width:calc((100% - 50px));
+        height: calc((100% - 50px));
+    }
+}
+@media only screen and (max-width:500px) {
+    .v_size {
+        height:160px;
+    }  
+}
+@media only screen and (max-width:400px) {
+    .v_size {
+        width:calc((100% / 2) - 5px);
+        height:170px;
+    }  
+}
