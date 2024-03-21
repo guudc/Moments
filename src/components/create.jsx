@@ -103,7 +103,7 @@ const Create = () => {
                             duration:2500,
                             msg:'Horray! Lets start capturing memories'
                         })
-                        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + resp.uri
+                        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?m=" + resp.uri
                         //console.log(uri, w.location.protocol, w.location.hostname)
                         //generate the qr-code
                         QRCode.toDataURL(

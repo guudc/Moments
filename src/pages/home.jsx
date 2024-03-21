@@ -31,6 +31,7 @@ const Home = () => {
     const [isUserState, setUserState] = useState(false) //user state
     const [isUserStateError, setUserStateError] = useState(false) //user state
     const [temp_moment, setTempMoment] = useState([])
+    const [temp_moment_refresh, setTempMomentRefresh] = useState(true)
     const [temp_view_moment, setTempViewMoment] = useState(null)
     const [imageOverlayURI, setOverlayImage] = useState("")
      
@@ -78,6 +79,7 @@ const Home = () => {
                 //can show the user state
                 setUserState(true)
                 setTempMoment(data)
+                setTempMomentRefresh(!temp_moment_refresh)
             }
         }
         
@@ -114,9 +116,11 @@ const Home = () => {
                     setUserStateError(false)
                     const resp = await res.json()
                     hasLoadUserMomentFlg = true
+                    
                     if(resp.status == true) {
                         setUserState(true)
                         setTempMoment(resp.moments)
+                        setTempMomentRefresh(!temp_moment_refresh)
                     }
                     else {
                         setUserState(false)
@@ -133,23 +137,16 @@ const Home = () => {
             w.speak('error_load', 'user_moment')
         }
     }
-    const getMomentView = () => {
-        let uri = w.location.href
-        if(uri.lastIndexOf('/') > -1) {  
-            uri = uri.substring(uri.lastIndexOf('/') + 1)
-            //remove any other parts if present
-            if(uri.indexOf('?') >  -1) {
-                uri = uri.substring(0, uri.lastIndexOf('?'))
-            }
-            if(uri.indexOf('/') >  -1) {
-                uri = uri.substring(0, uri.lastIndexOf('/'))
-            }
+    const getMomentView = () => {  
+        let uri = new URLSearchParams((new URL(w.location.href)).search);
+        if(uri.has('m') > -1) {   
+            uri = uri.get('m')
             if(uri != "") {  
                 setViewLoadingState(true)
                 setViewState(true)
                 //fect moment data
                 getMoments(uri, (data, err) => {   
-                    setViewLoadingState(false);  
+                    setViewLoadingState(false);  console.log(data)
                     if(data != false) {
                         w.speak('head_title', data.name)
                         setTempViewMoment(data)
@@ -232,6 +229,7 @@ const Home = () => {
                 : (!isUserStateError && isUserState) ?
                 <MomentView 
                     moment={temp_moment}
+                    refresh={temp_moment_refresh}
                 />
                 :
                 <NetworkError type='user_moment'/>

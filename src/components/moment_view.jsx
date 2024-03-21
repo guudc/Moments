@@ -9,7 +9,7 @@ import InfiniteScroll from './pagination'
 import QRCode from "qrcode";
 import { ModalInfo, setInfo } from './infomodal'
 
-const MomentView = ({moment = []}) => {
+const MomentView = ({moment = [], refresh = false}) => {
     /* DRAWS */
     const drawMomentView = (params) => {
         return (
@@ -39,14 +39,14 @@ const MomentView = ({moment = []}) => {
         w.speak('create', true)
     }
     const copyMomentLink = (e, id) => {
-        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "/" + id
+        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?m=" + id
         copyLink(uri)    
         setInfo({
             msg:'Copied', status:'good', duration:1500
         })   
     }
     const downloadQr = (id) => {
-        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "/" + id
+        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?=" + id
         const cnv = document.createElement('canvas')
         QRCode.toDataURL(
             cnv,
@@ -72,7 +72,7 @@ const MomentView = ({moment = []}) => {
         )     
     }
     const goToMoment = (id) => {
-        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "/" + id
+        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?m=" + id
         window.location.href = uri
     }
 

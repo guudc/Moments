@@ -105,7 +105,7 @@ const ViewMoment = ({moment = [], momentData = {}}) => {
     /* DOM FUNCTIONS */
     const copyMomentLink = () => {
         const id = momentData.id
-        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "/" + id
+        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?=" + id
         copyLink(uri)    
         setInfo({
             msg:'Copied', status:'good', duration:1500
@@ -114,7 +114,7 @@ const ViewMoment = ({moment = [], momentData = {}}) => {
     //to download qr code
     const downloadQr = () => {
         const id = momentData.id
-        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "/" + id
+        const uri = (w.location.protocol + '//' + w.location.hostname) + ((w.location.hostname == 'localhost') ? ":" + w.location.port : "") + "?=" + id
         const cnv = document.createElement('canvas')
         QRCode.toDataURL(
             cnv,
